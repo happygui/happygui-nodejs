@@ -30,17 +30,21 @@ app.get("/final", function(req, res) {
 
 
 io.sockets.on('connection', function (socket) {
-  socket.on('new', function (data) {
-    console.log(data);
-    socket.broadcast.emit('new', data);
+  socket.on('putCollection', function (i, data) {
+    console.log(i, data);
+    socket.broadcast.emit('gotCollection', data);
   });
-  socket.on('update', function (data) {
-    console.log(data);
-    socket.broadcast.emit('update', data);
+  socket.on('updateElement', function (i, data) {
+    console.log(i, data);
+    socket.broadcast.emit('updatedElement', i, data);
   });
-  socket.on('delete', function (data) {
+  socket.on('createElement', function (data) {
     console.log(data);
-    socket.broadcast.emit('delete', data);
+    socket.broadcast.emit('createdElement', data);
+  });
+  socket.on('deleteElement', function (data) {
+    console.log(data);
+    socket.broadcast.emit('deletedElement', data);
   });
 });
 
