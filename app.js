@@ -21,13 +21,29 @@ app.configure(function () {
 });
 
 app.get("/", function(req, res) {
-  console.log(res.render);
   res.render("editor.html");
+});
+
+app.get("/final", function(req, res) {
+  res.render("preview.html");
 });
 
 
 io.sockets.on('connection', function (socket) {
-  socket.on('my other event', function (data) {
+  socket.on('new', function (data) {
     console.log(data);
+    socket.broadcast.emit('new', data);
+  });
+  socket.on('update', function (data) {
+    console.log(data);
+    socket.broadcast.emit('update', data);
+  });
+  socket.on('delete', function (data) {
+    console.log(data);
+    socket.broadcast.emit('delete', data);
   });
 });
+
+
+
+
