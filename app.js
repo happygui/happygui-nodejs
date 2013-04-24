@@ -30,6 +30,7 @@ app.get("/final", function(req, res) {
 
 
 io.sockets.on('connection', function (socket) {
+  socket.emit("connected", 1);
   socket.on('putCollection', function (i, data) {
     console.log(i, data);
     socket.broadcast.emit('gotCollection', data);
