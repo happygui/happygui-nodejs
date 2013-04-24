@@ -36,12 +36,12 @@ io.sockets.on('connection', function (socket) {
     socket.broadcast.emit('gotCollection', data);
   });
   socket.on('updateElement', function (element, key, data) {
-    console.log(i, data);
-    socket.broadcast.emit('updatedElement', i, data);
+    console.log(element, key, data);
+    socket.broadcast.emit('updatedElement', element, key, data);
   });
   socket.on('updatePosElement', function (element, x, y) {
-    console.log(i, element, x, y);
-    socket.broadcast.emit('updatedElement', i, data);
+    console.log(element, x, y);
+    socket.broadcast.emit('updatedElement', element, x,y);
   });
   socket.on('createElement', function (data) {
     console.log(data);
