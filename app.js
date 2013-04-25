@@ -45,7 +45,7 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on('updatePosElement', function (element, x, y) {
     console.log(element, x, y);
-    socket.broadcast.emit('updatedElement', element, x,y);
+    socket.broadcast.emit('updatedPosElement', element, x,y);
   });
   socket.on('createElement', function (data) {
     console.log(data);
