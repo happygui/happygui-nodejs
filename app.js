@@ -5,8 +5,10 @@ var port = process.env.PORT || 1234
   , http = require('http');
 
 var app = express()
-  , server = app.listen(port)
+  , server = require('http').createServer(app)
   , io = require('socket.io').listen(server);
+  
+server.listen(port);
 
 app.configure(function () {
   app.set("views", __dirname + "/static");
