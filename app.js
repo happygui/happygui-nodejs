@@ -28,9 +28,13 @@ app.get("/preview", function(req, res) {
   res.render("preview.html");
 });
 
-io.configure(function () {
-  io.set("transports", ["xhr-polling"]);
-  io.set("polling duration", 10);
+io.configure(function () { 
+  io.set('transports', [
+    'xhr-polling'
+  , 'jsonp-polling'
+  , 'htmlfile'
+  ]);
+  io.set("polling duration", 10); 
 });
 
 io.sockets.on('connection', function (socket) {
